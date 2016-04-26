@@ -1,0 +1,387 @@
+@font-face {
+  font-family: "Universal Light";
+  src: local("Universal Light"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/UniversalLight.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+
+@main-color: #777;
+@footer-background: url(../images/bg/footer-bg.jpg);
+@image-height: image-height("../images/bg/ft-bg.gif");
+
+h2 {
+  font-size: 2.18em;
+
+}
+
+h3 {
+  font-size: 1.68em;
+
+}
+
+h4 {
+  font-size: 1.56em;
+
+}
+
+p {
+  font-size: 0.94em;
+ /* font-family: "Universal Light";*/
+  color: @main-color;
+}
+
+/**NAVBAR**/
+@navbar-height: 90px;
+
+.navbar {
+  height: @navbar-height;
+  background-color: rgba(248, 248, 248, 0.9);
+  border: none;
+  margin: 0px;
+
+  .navbar-brand {
+    text-indent: -9999px;
+
+    //ПОЧЕМУ НЕ РАБОТАЕТ
+    //(@navbar-height - image-height("logo.png"))/2
+
+    margin-top: 15px;
+    width: 134px;
+    height: 55px;
+    background: url(../images/logo.png) no-repeat;
+  }
+
+  .navbar-header {
+    span.icon-bar {
+      background-color: #fff;
+    }
+  }
+
+  .nav {
+    margin-top: @navbar-height/2-15;
+
+    a {
+      line-height: 0;
+      color: @main-color;
+
+      &:hover {
+        color: #dbdbdb;
+        background-color: transparent;
+      }
+
+      &:focus, &:active {
+        background-color: transparent;
+        color: #dbdbdb;
+      }
+
+    }
+
+    span {
+      line-height: 0;
+      color: #fff;
+      border: none;
+      margin-left: 3px;
+      margin-right: 3px;
+    }
+
+    .btn {
+      line-height: 0;
+      background-color: rgba(222, 109, 110, 255);
+      color: #fff;
+      border: none;
+      margin-left: 20px;
+      margin-right: 10px;
+      &:hover, &:focus {
+        color: #f9f9f9;
+        background-color: rgb(211, 106, 106);
+      }
+    }
+  }
+
+}
+
+/**END NAVBAR**/
+
+.jumbotron {
+  @height: 615px;
+
+  padding: 0;
+  background: #2d2d30 url(../images/bg/hero-unit.jpg) no-repeat 50% top;
+  height: @height;
+
+  .jumbo-text {
+    color: #fff;
+    bottom: 0;
+    margin-top: @height - 190;
+
+    h1 {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  .text-wrapper {
+    margin: auto;
+    width: 80%;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+  }
+}
+
+/**ABOUT**/
+
+@color-circle1: #4eb9f4;
+@color-circle2: #6fc125;
+@color-circle3: #ff5649;
+@color-circle4: #e48f23;
+
+.about {
+  margin: 10px 0;
+  -webkit-box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.5);
+
+  .about-images {
+    padding: 55px 0px;
+
+    .item1 {
+      background-color: @color-circle1;
+    }
+
+    .item2 {
+      background-color: @color-circle2;
+    }
+
+    .item3 {
+      background-color: @color-circle3;
+    }
+
+    .item4 {
+      background-color: @color-circle4;
+    }
+
+    .ab-item {
+
+      position: relative;
+      margin: 0 auto;
+      width: 175px;
+      height: 175px;
+      border-radius: 50%;
+      text-align: center;
+      color: #fff;
+
+      &:hover {
+        cursor: pointer;
+        .ab-body {
+          opacity: 0.26;
+
+          h5 {
+            display: none;
+          }
+        }
+
+        .ab-text {
+          display: block;
+          padding: 45px 2px;
+
+          p {
+            color: #fff;
+          }
+        }
+
+      }
+
+      .ab-body h5 {
+        margin: auto;
+        padding-top: 75%;
+        text-transform: capitalize;
+      }
+
+      .ab-text {
+        display: none;
+      }
+
+      .ab-camera {
+        background: url("../images/thumb/camera-thumb.png") no-repeat center 35%;
+        //#E48F23
+      }
+
+      .ab-tickets {
+        background: url("../images/thumb/tickets-thumb.png") no-repeat center 35%;
+        //#E48F23
+      }
+
+      .ab-beer {
+        background: url("../images/thumb/beer-thumb.png") no-repeat center 35%;
+        //#E48F23
+      }
+
+      .ab-dev {
+        background: url("../images/thumb/device-thumb.png") no-repeat center 35%;
+        //#E48F23
+      }
+
+      .ab-thumb {
+
+        display: block;
+        position: absolute;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+/**END ABOUT**/
+
+/**news**/
+.news {
+  padding: 40px 0 80px 60px;
+  .media:first-child {
+    margin-top: 0;
+  }
+  .media {
+    margin-top: 70px;
+  }
+}
+
+/**END NEWS**/
+
+/**FOOTER**/
+
+@footer-main-color: #8a8b8a;
+
+.footer {
+  background: @footer-background top;
+
+  .footer-body {
+    padding: 30px 0px 20px 60px;
+    color: @footer-main-color;
+
+    h4 {
+      color: rgba(105, 107, 106, 255);
+    }
+
+    dt {
+      padding-bottom: 10px;
+    }
+
+    dl a {
+      color: @footer-main-color;
+      font-size: 0.93em;
+
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    .social-icons {
+      padding-top: 10px;
+
+      .list-inline li {
+        padding-right: 15px;
+      }
+
+      .icon-container {
+        position: relative;
+        width: 45px;
+        height: 45px;
+        background-color: @footer-main-color;
+        border-radius: 50%;
+
+        &:hover {
+          background-color: @footer-main-color+20;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 45px;
+          background: url(../images/social-sprite.png) no-repeat left top;
+          position: absolute;
+          display: block;
+        }
+        .fb {
+          background-position: 14px top;
+          top: 5px;
+        }
+
+        .tw {
+          background-position: -17px top;
+          top: 7px;
+        }
+
+        .dr {
+          background-position: -60px top;
+          top: 5px;
+        }
+
+        .sh {
+          background-position: -98px top;
+          top: 5px;
+        }
+      }
+    }
+
+  }
+
+}
+
+/**END FOOTER**/
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (max-width: 768px) {
+
+  .navbar-collapse {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+
+    .nav {
+
+      li {
+        padding-top: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.7);
+        }
+
+      }
+      a {
+        font-size: 1em;
+        border-bottom: 1px solid #bfbaa3;
+
+      }
+    }
+  }
+
+  /*end nav*/
+  .about {
+
+    .about-images {
+      .ab-item {
+        margin-bottom: 20px;
+      }
+
+    }
+
+    .news {
+      padding: 0 10px;
+      .media-left {
+        display: block;
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+  }
+}
+
