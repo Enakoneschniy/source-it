@@ -1,0 +1,62 @@
+//***********************************************
+// 1
+//***********************************************
+function arrGenerator(x) {
+			
+			var max=100;
+			var min=0;
+			var mas=[];
+
+			for (var i = 0 ; i < x; i++) {
+				mas[i] = Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			
+			return mas;
+	}
+
+
+//***********************************************
+// 2
+//***********************************************
+
+function arrCount(arr, n) {
+ if (n > 1)
+ {
+ 	var k = 0;
+ 	var arrCountNew = [];
+ 	for (var i = n - 1; i < arr.length; )
+	 	{
+	 		arrCountNew[k] = arr[i];
+	 		i += n;
+	 		k++;
+	 	}
+ 	return arrCountNew;
+ }
+ 	else alert("Шаг меньше 1");
+ }
+
+//***********************************************
+// 3
+//***********************************************
+
+function changeObj(object) {
+	var counter = 0; 
+	for (var key in object) {
+		counter++;
+		if ((typeof object[key] === 'number')||
+			(typeof object[key] === 'string')||
+			(typeof object[key] === 'boolean')){
+			object[key] =  counter;
+	}
+	else if (!Array.isArray(object[key]))
+	{
+		var counter1 = 0; 
+		for (var key1 in object[key]) 
+		{
+			counter1++;
+			object[key][key1] = counter + '.' + counter1;
+		}
+	}
+}
+return object;
+}
