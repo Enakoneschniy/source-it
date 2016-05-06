@@ -1,9 +1,20 @@
 
     'use strict';
+    /**
+     *
+     * @param min
+     * @param max
+     * @returns {*}
+     */
     function rand(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    /**
+     *
+     * @param n
+     * @returns {Array}
+     */
     function arrGenerator(n){
         let arResult = [];
         for (let i = 0; i < n; i++){
@@ -12,6 +23,12 @@
         return arResult;
     }
 
+    /**
+     *
+     * @param arr - {Array} - input array
+     * @param n - {Number} - iterator
+     * @returns {Array} or {false}
+     */
     function arrCount(arr, n){
         if (n < 1){
             return false;
@@ -33,30 +50,30 @@
         innerObj: {
             ia: 3,
             ib: 4,
-            ic: 'test',
-            foo:{
-                q: "sdsd",
-                w: 1,
-                e: 444
-            }
+            ic: 'test'
         },
         testArr: [1,3,'text']
     };
 
-    function changeObj(object) {
-        let iterator = arguments[1] === undefined ? 1 : arguments[1] + 0.1;
-        iterator = +iterator.toFixed(1);
-        let increment = arguments[2] === undefined ? 1 : +arguments[2];
+    /**
+     *
+     * @param object
+     * @returns {Object}
+     */
+    var changeObj = function rec(object) {
+        let iterator = arguments[1] || 1;
+        let separator = arguments[2] || "";
+        let flag = arguments[2];
+        let it = 1;
         for(let prop in object){
-            if(typeof object[prop] !== 'object') {
-                object[prop] = iterator;
-            }else if(object[prop] !== 'function' && !Array.isArray(object[prop])){
-                changeObj(object[prop], iterator, 0.1);
+            if(typeof object[prop] !== 'object' && typeof object[prop] !== 'function'){
+                object[prop] = flag ? iterator + separator + it  : iterator.toString();
+            }else if(typeof object[prop] === 'object' && !Array.isArray(object[prop])){
+                rec(object[prop], iterator, '.', true);
             }
-            iterator += +increment.toFixed(1);
-            iterator = +iterator.toFixed(1);
+            iterator += flag ? 0 : 1;
+            it += flag ? 1 : 0;
         }
         return object;
-    }
-
+    };
 
