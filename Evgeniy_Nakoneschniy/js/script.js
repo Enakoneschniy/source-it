@@ -19,10 +19,8 @@
             return arr;
         }
         var arResult = [];
-        for(let i = 0; i < arr.length; i++){
-            if(i % n === 0){
+        for(let i = n; i < arr.length; i += n){
                 arResult.push(arr[i]);
-            }
         }
         return arResult.length > 0 ? arResult : false;
 
