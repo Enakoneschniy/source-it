@@ -7,7 +7,7 @@
     function arrGenerator(n){
         let arResult = [];
         for (let i = 0; i < n; i++){
-            arResult[i] = rand(-100, 100);
+            arResult.push(rand(-100, 100));
         }
         return arResult;
     }
@@ -49,7 +49,6 @@
         let iterator = arguments[1] === undefined ? 1 : arguments[1] + 0.1;
         iterator = +iterator.toFixed(1);
         let increment = arguments[2] === undefined ? 1 : +arguments[2];
-        console.log(iterator);
         for(let prop in object){
             if(typeof object[prop] !== 'object') {
                 object[prop] = iterator;
