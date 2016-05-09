@@ -85,13 +85,16 @@ var obj = {
 function changeObj(obj) {
     var i = 1;
     for (var key in obj) {
-        if (typeof (obj[key]) == 'object') {
+        if (Array.isArray(obj[key])){
+          break;
+        } else if (typeof (obj[key]) == 'object') {
             toNumeric(i, obj[key]);
         } else {
             obj[key] = "" + i;
         }
         i++;
     }
+    
     function toNumeric(index, obj) {
         var j = 1;
         for (var key in obj) {
