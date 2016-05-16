@@ -15,8 +15,11 @@ function buildFunc(n){
     return arFunctions;
 }
 
-for(let i = 0; i < 5; i++){
-    buildFunc(5)[i]();
+let n = 10;
+let arFunc = buildFunc(n);
+
+for(let i = 0; i < n; i++){
+    arFunc[i]();
 }
 
 
