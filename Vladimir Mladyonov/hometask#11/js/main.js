@@ -25,21 +25,23 @@
       	var fragment = document.createDocumentFragment();
       	var size = weight - 1;
       	if (Array.isArray(data)){
-      		fragment.appendChild(createHeading(data));
+      		createHeading(data);
       	}
 
       	function createHeading(entry){
       		if (size < 6) { size++};
-      		var element = document.createElement("h" + size);
-      		for (var i = 0; i < entry.length; i++){
+      		var element;
+      		for (var i = 0; i < entry.length; i++) {
       			if (Array.isArray(entry[i])) {
-      				element.appendChild(createHeading(entry[i]));
+      				(createHeading(entry[i]));
       			}else{
+      				element = document.createElement("h" + size);
       				element.appendChild(document.createTextNode(entry[i] + " "));
+      				fragment.appendChild(element);
       			}
       		}
       		size--;
-      		return element;
+      		return true;
       	}
       	return fragment;
       }
@@ -54,14 +56,14 @@
       		entryStr = entryStr.trim();
       		if (!entryStr) {
       			document.getElementById("first-name").style.backgroundColor = "#ffaaaa";
-      			alert("Please enter You first name\nand try again.");
+      			alert("Please enter Your first name\nand try again.");
       		}else{
       			document.getElementById("first-name").style.backgroundColor = "#ffffff";
       			entryStr = document.getElementById("last-name").value;
       			entryStr = entryStr.trim();
       			if (!entryStr) {
       				document.getElementById("last-name").style.backgroundColor = "#ffaaaa";
-      				alert("Please enter You last name\nand try again.");
+      				alert("Please enter Your last name\nand try again.");
       			}else{
       				document.getElementById("last-name").style.backgroundColor = "#ffffff";
 
