@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{ margin: 0 auto;}
+        .block{
+            margin: 0 auto;
+            width: 50px;
+            height: 50px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <button id="btn">Click!</button>
+    <div class="block"></div>
+</div>
+<script>
+
+    function setWidth(n) {
+        n = 100;
+        var btn = document.getElementById('btn');
+        var block = document.getElementsByClassName('block')[0];
+        var width = block.clientWidth;
+        var height = block.clientHeight;
+
+        console.log(block);
+
+        btn.onclick =  function () {
+            var x = setInterval(function () {
+                block.style.width = (width ++) +'px';
+                block.style.height = (height ++)  +'px';
+            },20)
+
+
+
+        };
+
+    }
+
+
+    setWidth(100);
+
+</script>
+</body>
+</html>
+
+
