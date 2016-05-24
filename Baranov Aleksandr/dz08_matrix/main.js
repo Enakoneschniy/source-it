@@ -19,20 +19,33 @@ function multiplicationTable(size) {
   }
   return table;
 }
-
-function matrix (size) {
-  var matrix = [];
-  
-  // @todo как генирировать х 0 1
-
-  return matrix;
+//**********************************************
+//**********************************************
+function matrix(size) {
+  var arrMatrix = new Array(size);
+  var n = 0;
+  var m = arrMatrix.length;
+  for (var i = 0; i < arrMatrix.length; i++) {
+   arrMatrix[i] = [size];
+   var arr = [];
+   for (var j = 0; j < size; j++) {
+     if (i === j) arr[j] = 1
+      else if (i + j === arrMatrix.length - 1) arr[j] = 2;
+      else if ((i < 4)&&(n < j)&&(j < m)) arr[j] = 3;
+      else if ((j > 5)&&(i < arrMatrix.length)) arr[j] = 4;
+      else if ((i > 5)&&(m < j)&&(j < n)) arr[j] = 5;
+      else arr[j] = 6;
+  }
+    arrMatrix[i] = arr;
+    n++;
+    m--;
 }
-
-function pascal (size) {
-  // @todo
-
+return arrMatrix;
+}
+//**********************************************
+//*********************************************
+function pascal(size) {
   var triangle = [[1]], tier;
-
   for (var j = 0; j < size-1; j++) {
     tier = [1];
     for (var k = 1; k < triangle[j].length; k++) {
@@ -41,7 +54,6 @@ function pascal (size) {
     tier.push(1);
     triangle.push(tier);
   }
-
   return triangle;
 }
 
