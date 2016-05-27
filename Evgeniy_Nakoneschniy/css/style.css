@@ -1,0 +1,11 @@
+td{
+    width: 20px;
+    height: 20px;
+}
+.tasks{
+    float: left;
+    margin-right: 10px;
+    border-right: 1px solid black;
+    padding: 5px;
+    min-height: 245px;
+}

@@ -43,4 +43,3 @@ $(function(){
 		$(this).removeClass('active').addClass('active').siblings().removeClass('active');
 	});
 });
-
