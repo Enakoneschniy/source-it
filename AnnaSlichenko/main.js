@@ -33,10 +33,6 @@ function even(){
 }
 
 function activeItem(){
-	var lists = $('.list');
-	for(var j = 0; j < lists.length; j++){
-		$(lists[j]).addClass('list' + (j+1));
-	}
 	$("li").click(function() {
 		$(this).closest( 'ul' ).children().removeClass('active');
 		$(this).addClass('active');
