@@ -1,0 +1,163 @@
+/* reset css */
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  color: #000000;
+  font: 14px/1.1 Tahoma, Geneva, sans-serif;
+}
+a {
+  text-decoration: underline;
+  color: #23507c;
+}
+a:hover {
+  text-decoration: none;
+}
+img {
+  border-style: none;
+  display: inline-block;
+}
+*:focus {
+  outline: none;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+table {
+  border-collapse: collapse;
+  border: none;
+}
+td,
+th {
+  padding: 0;
+}
+/* form */
+input,
+textarea,
+select {
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+  color: #000000;
+  font: 14px/1.1 Tahoma, Geneva, sans-serif;
+}
+form fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+textarea {
+  resize: none;
+  border: none;
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.clear-fix:before,
+.clear-fix:after {
+  content: " ";
+  display: table;
+}
+.clear-fix:after {
+  clear: both;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+/* wrapper */
+#wrapper {
+    max-width: 1000px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+#wrapper .main-list {
+    display: flex;
+    flex-flow: row wrap;
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    background: cornflowerblue;
+    margin: 10px 0;
+    border: 1px solid #000;
+    border-radius: 5px;
+    overflow: hidden;
+}
+#wrapper .main-list li {
+    border: 1px solid #ccc;
+    width: 25%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+@media  (max-width: 640px) {
+    #wrapper .main-list li {
+        width: 33.33%;
+    }
+    #wrapper .main-list li:nth-child(3){
+        order: -1;
+    }
+}
+.ajax-block {
+    border-top: 2px solid greenyellow;
+    text-align: justify;
+}
+.ajax-block:after {
+    content: '';
+    display: inline-block;
+    height: 0;
+    width: 100%;
+}
+.ajax-block h3 {
+    font-size: 16px;
+    border-bottom: 1px solid #000;
+}
+.ajax-block > div {
+    border: 1px solid #23507c;
+    border-radius: 5px;
+    min-height: 300px;
+    margin: 20px 0;
+    width: 30%;
+    display: inline-block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 1% 2%;
+    vertical-align: top;
+}
+.ajax-block > div > a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px auto;
+    width: 150px;
+    line-height: 30px;
+    background: #ff0000;
+    opacity: 0.5;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    transition: opacity 0.3s linear;
+}
+.ajax-block > div > a:hover {
+    opacity: 1;
+}
+#error {
+    color: #ff0000;
+    font-size: 20px;
+}
