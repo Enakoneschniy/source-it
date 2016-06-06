@@ -32,16 +32,19 @@ $("button.btn-clean").bind("click", function(event){
 // ************************
 $(".list").each(function (index, value){
 	$(this).find('li:odd').each(function (index, value){
-		$(this).prepend( ($(this).index() + 1) + " ");
+		$(this).prepend($(this).text().slice(-1) + " ");
 	});
 });
 
 // ************************
 //   № 5
-// !!!!! Не успел додумать как оставить класс в каждом списке.
 // ************************
-$("ul").each(function (index){
-	$('li').on("click",  function(){
-    	$("li").removeClass("active"); 
-    	$(this).addClass("active"); 
-})});
+$("ul").each(function (){
+	$(this).each(function(){
+		var ul = $(this);
+		ul.find("li").on("click",function(){
+			ul.find("li").removeClass("active"); 
+			$(this).addClass("active"); 
+		})
+	})
+});
