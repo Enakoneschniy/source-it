@@ -1,4 +1,3 @@
-//importScripts('geo2.js');
 (function () {
 
     var tabs = $('li, .tabs');
@@ -20,12 +19,11 @@
         'default': function () {
         },
         'geolocation': function () {
-            console.log(Geo);
             Geo.init(document.getElementById('map'));
         },
         'synccalculation': function () {
             "use strict";
-          
+
         },
         'webworker': function () {
             var button = document.getElementById('start');
@@ -33,11 +31,12 @@
             var form = document.getElementsByClassName('form-block')[0];
             var inputValues = form.getElementsByTagName('input');
 
-            WebWorker.init('js/script.js',{
+            WebWorker.init('js/wwCalculation.js', {
                 button: button,
                 resultDiv: resultDiv,
                 form: form,
-                inputValues: inputValues});
+                inputValues: inputValues
+            });
         },
 
         __all: function (route) {
@@ -49,8 +48,7 @@
     var navigate = function () {
         var pathName = strip(document.location.pathname);
         if (typeof routes[pathName] === 'function') {
-            console.log('here');
-            reset();
+            resetTabsFunc();
             routes[pathName](pathName);
             routes.__all(pathName);
         } else {
@@ -59,13 +57,14 @@
         }
     };
 
-    var reset = function () {
-      Geo.stopGeo();
+    var linkToNormal = function (str) {
+        return 'hhht://www' + str;
     };
 
-    document.addEventListener('DOMContentLoaded', function () {
-        navigate();
-    });
+
+    var resetTabsFunc = function () {
+        Geo.stopGeo();
+    };
 
     document.addEventListener('click', function (e) {
         var target = e.target;
@@ -80,7 +79,17 @@
         }
     });
 
-    document.addEventListener('popstate', function (e) {
+    document.addEventListener('DOMContentLoaded', function () {
         navigate();
     });
+
+    //Works on the transition from one history element to another(on history arrows click)
+    window.addEventListener('popstate', function () {
+        navigate();
+    });
+
+    // And onhashchange for IE
+    if (navigator.userAgent.match(/msie/i)) {
+        window.onhashchange = navigate;
+    }
 })();

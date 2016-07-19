@@ -4,16 +4,22 @@
 (function () {
 
     var IN_FULL_SCREEN = false;
-    var fs_icon = $('.full-screen-icon');
 
-    //document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
-
-    fs_icon.click(function () {
-        //.fs-cover
-        var canvas = this.parentNode.parentNode;
-        toggleFullScreen(canvas);
-    });
-
+// Object options = {canvas: canvas, icon: icon}.
+    function init(options) {
+        //Checking if browser supports API
+        document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+        var icons = $(options.icon);
+        if (document.fullscreenEnabled) {
+            icons.each(function (i, element) {
+                element.style.display = 'block';
+            });
+            icons.click(function(e){
+                var canvas = e.target.closest(options.canvas);
+                 toggleFullScreen(canvas);
+            });
+        }
+    }
 
     function requestFullscreen(element) {
         if (element.requestFullscreen) {
@@ -24,7 +30,6 @@
             element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
         }
         IN_FULL_SCREEN = true;
-
     }
 
     // Cancel full screen mode
@@ -36,9 +41,7 @@
         } else if (document.webkitCancelFullScreen) {
             document.webkitCancelFullScreen();
         }
-
         IN_FULL_SCREEN = false;
-
     }
 
 
@@ -50,9 +53,13 @@
         }
     }
 
-    document.addEventListener("MSFullscreenError", function (evt) {
-        console.warn("full screen error has occured " + evt.target);
+    document.addEventListener("MSFullscreenError", function (e) {
+        console.warn("full screen error has occured " + e.target);
     }, true);
 
+
+    document.addEventListener('DOMContentLoaded', function () {
+        init({canvas:'.fs-cover', icon:'.full-screen-icon'});
+    }, true);
 
 })();

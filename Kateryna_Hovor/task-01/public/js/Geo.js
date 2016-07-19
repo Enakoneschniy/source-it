@@ -22,12 +22,19 @@ var Geo = (function () {
 
 
     var init = function (node, options) {
+
         canvas = node;
         if (watchID) {
             return;
         }
+
         if (options && Object.prototype.toString.call(options) === "[object Object]") {
-            Object.assign(defaultOptions, options);
+            var keys = Object.keys(options);
+            for (var key in defaultOptions) {
+                if (keys.indexOf(key)!==-1) {
+                    Object.defineProperty(defaultOptions, key, {value:  options[key]});
+                }
+            }
         }
         if (navigator.geolocation) {
             watchID = navigator.geolocation.watchPosition(success, error);
@@ -65,7 +72,6 @@ var Geo = (function () {
 
     function showMap(mapPattern, options, markers) {
         var mapUrl = replace(options, mapPattern) + markersToString(markers);
-        console.log(mapUrl);
         canvas.innerHTML = "<img src='" + mapUrl + "'>";
     }
 
@@ -90,11 +96,20 @@ var Geo = (function () {
         return markerString;
     }
 
+    //obj2 additional object
+    function mergeObjects(obj1, obj2) {
+        var keys = Object.keys(obj2);
+        for (var key in obj1) {
+            if (keys.indexOf(key)!==-1) {
+                Object.defineProperty(obj1, key, {value: obj2[key]});
+            }
+        }
+    }
+    
+
     return {
         init: init,
         stopGeo: stopGeo
     }
 
 }());
-
-//Geo.init(document.getElementById('out'));

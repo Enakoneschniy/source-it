@@ -5,6 +5,9 @@
     <title>JS API Part 2</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css"/>
+    <!--[if IE 11]>
+    <link rel="stylesheet" type="text/css" href="css/ie11tabs.css" />
+    <![endif]-->
     <script src="js/jquery-1.11.2.min.js"></script>
 </head>
 <body>
@@ -30,7 +33,7 @@
         <div class="content-block" data-content="geolocation">
             <span class="full-screen-icon"></span>
             <div id="map">
-                <img src="css/waiting.gif " alt="Map">
+                <img class="wait" src="css/waiting.gif "  alt="Map">
             </div>
         </div>
     </div>
@@ -41,6 +44,7 @@
             <div class="text-wrapper">
                 <p>Example of long calculations that blocks page. This is example page.</p>
 
+                <a href="google.com">Google </a>
                 <p>Click on button and try to navigate to other tabs on the page or activate fullscreen.</p>
                 <button id="syncstart">Start sync calculation</button>
                 <p>Calculations result: <span id="syncresult">N/A</span></p>
@@ -88,11 +92,6 @@
     </div>
 
 </section>
-<script>
-    $(window).load(function () {
-        $(".loader").fadeOut("slow");
-    })
-</script>
 
 <script src="js/WebWorker.js"></script>
 <script src="js/Geo.js"></script>
