@@ -18,9 +18,13 @@ var WebWorker = (function () {
     };
 
     var init = function (src, options) {
-        console.log(options);
         if (options && Object.prototype.toString.call(options) === "[object Object]") {
-            Object.assign(defaultOptions, options);
+            var keys = Object.keys(options);
+            for (var key in defaultOptions) {
+                if (keys.indexOf(key) !== -1) {
+                    Object.defineProperty(defaultOptions, key, {value: options[key]});
+                }
+            }
             if (window.Worker && !worker) {
                 worker = new Worker(src);
                 worker.addEventListener("message", messageHandler, true);
@@ -48,7 +52,7 @@ var WebWorker = (function () {
         var messageType = e.data.type;
         switch (messageType) {
             case ("status"):
-                setRunningState.call(WebWorker,e.data.message === "Start");
+                setRunningState.call(WebWorker, e.data.message === "Start");
                 break;
             case ("progress"):
                 defaultOptions.resultDiv.innerHTML +=
@@ -65,19 +69,17 @@ var WebWorker = (function () {
     function errorHandler(e) {
         console.warn("error: " + e.message);
     }
-
-
+    
     function setRunningState(p) {
-        debugger;
         // while running, the stop button is enabled and the start button is not
         defaultOptions.button.disabled = p;
     }
 
     function startWorker() {
         //clear the table
-        defaultOptions.resultDiv.innerHTML='';
+        defaultOptions.resultDiv.innerHTML = '';
         if (!isNumericVals(defaultOptions.inputValues)) {
-            errorHandler({message:'Not a number. Please input proper values'});
+            errorHandler({message: 'Not a number. Please input proper values'});
             return false;
         }
         //Setting options from input values
@@ -86,15 +88,15 @@ var WebWorker = (function () {
         worker.postMessage(options);
     }
 
-    function stopWorker() {
+    var stopWorker = function () {
         worker.terminate();
+        worker = null;
         setRunningState(false);
-    }
-    /*function addToTable() {
-    }*/
+    };
 
     return {
-        init: init
+        init: init,
+        stopWorker: stopWorker
     }
 
 }());
